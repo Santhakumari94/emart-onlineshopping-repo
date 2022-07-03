@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
 
 	<title>Stock List</title>
+	
 </head>
 
 <!-- <body background="https://img.freepik.com/free-psd/online-shopping-w…-template-shopping-elements_1150-38886.jpg?w=2000">-->
@@ -43,7 +44,10 @@
 					<td th:text="${temp.stockQuantity}" />
 					<div th:if="${isBuyer}">
 						<td th:text="${temp.product.productDesc}" />
-						<td><a th:href="@{'/cart/add/'+${temp.product.productId}}">Add To Cart</a></td>
+						<td><a th:if="${temp.stockQuantity}>0" th:href="@{'/cart/add/'+${temp.product.productId}}">Add To Cart</a>
+						
+						<h7 th:if="${temp.stockQuantity}<=0" th:href="@{'/cart/add/'+${temp.product.productId}}"> NO Stock</h7>
+						</td>
 					</div>
 					<div th:if="${isSeller}">
 						<td><a th:href="@{'/stock/edit/'+${temp.stockId}}">Update</a></td>

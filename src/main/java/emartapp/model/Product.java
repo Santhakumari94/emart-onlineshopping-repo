@@ -40,6 +40,8 @@ public class Product
 	@OneToOne(mappedBy = "product", cascade = CascadeType.ALL)
 	private Stock stock;
 	
+	private long date =System.currentTimeMillis();
+	
 	public Product() {}
 
 	public Product(String productName, int productPrice, String productDesc) {

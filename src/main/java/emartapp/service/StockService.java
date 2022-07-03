@@ -23,4 +23,22 @@ public class StockService
 	public void delete(int stockId) {
 		stockDAO.deleteById(stockId);
 	}
+	
+	public void updateQty(int stockId, String action, int qty) throws Exception  {
+		
+		 Stock stock = stockDAO.findByStockId(stockId);
+		 
+		 if(null!=action && action.equalsIgnoreCase("add")) {
+			 System.out.println("stock.getStockQuantity()+qty "+(stock.getStockQuantity()+qty));
+			 stock.setStockQuantity(stock.getStockQuantity()+qty);
+		 }else {
+			 if(stock.getStockQuantity()<=0) {
+				 throw new Exception("Out of stock");
+			 }
+			 System.out.println("stock.getStockQuantity(-qty "+(stock.getStockQuantity()-qty));
+			 stock.setStockQuantity(stock.getStockQuantity()-qty);
+		 }
+		stockDAO.save(stock);
+	}
+	
 }

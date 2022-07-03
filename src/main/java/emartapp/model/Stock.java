@@ -1,5 +1,7 @@
 package emartapp.model;
 
+import java.util.Date;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -33,11 +35,21 @@ public class Stock
     )
 	private Seller seller;
 	
+	private long date =System.currentTimeMillis();
+	
 	public Stock() {}
 	
 	public Stock(int stockQuantity, String uom) {
 		this.stockQuantity = stockQuantity;
 		this.uom = uom;
+	}
+
+	public long getDate() {
+		return date;
+	}
+
+	public void setDate(long date) {
+		this.date = date;
 	}
 
 	public int getStockId() {
