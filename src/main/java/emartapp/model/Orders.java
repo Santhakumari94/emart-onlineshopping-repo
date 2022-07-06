@@ -37,6 +37,19 @@ public class Orders
 		inverseJoinColumns = @JoinColumn(name = "productId"))
 	private List<Product> products = new ArrayList<Product>();
 	
+	private double totalPrice;
+	
+	
+	
+	public double getTotalPrice() {
+		
+		totalPrice = products.stream().map(p->p.getProductPrice()).reduce(0, Integer::sum);
+		
+		return totalPrice;
+	}
+
+	
+
 	public Orders() {}
 
 	@Override

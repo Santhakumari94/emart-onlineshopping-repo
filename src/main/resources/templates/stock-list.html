@@ -14,7 +14,7 @@
 </head>
 
 <!-- <body background="https://img.freepik.com/free-psd/online-shopping-w…-template-shopping-elements_1150-38886.jpg?w=2000">-->
-<body style="background-color:#FFA07A">
+<body style="background-color:#FED8B1">
 	<div th:insert="navbar"></div>
 	
 	<div class="container">
@@ -46,7 +46,7 @@
 						<td th:text="${temp.product.productDesc}" />
 						<td><a th:if="${temp.stockQuantity}>0" th:href="@{'/cart/add/'+${temp.product.productId}}">Add To Cart</a>
 						
-						<h7 th:if="${temp.stockQuantity}<=0" th:href="@{'/cart/add/'+${temp.product.productId}}"> NO Stock</h7>
+						<h7 th:if="${temp.stockQuantity}<=0" th:href="@{'/cart/add/'+${temp.product.productId}}" style="color:red;"> NO Stock</h7>
 						</td>
 					</div>
 					<div th:if="${isSeller}">
