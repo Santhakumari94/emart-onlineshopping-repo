@@ -24,11 +24,11 @@ spec:
                 name: mysql
             env:
               - name: DB_HOSTNAME
-                value: 192.168.21.229
+                value: mysql
               - name: DB_PORT
                 value: "3306"
               - name: DB_NAME
-                value: "emartwebappdb"
+                value: "webappdb"
               - name: DB_USERNAME
                 value: "root"
               - name: DB_PASSWORD

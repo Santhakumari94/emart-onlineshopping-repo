@@ -3,9 +3,9 @@ kind: Service
 metadata:
   name: myapp-service
 spec:
-  type: NodePort
+  type: LoadBalancer
   selector:
     app: emart-webapp
   ports:
-  - port: 8080
-    targetPort: 8080
+  - port: 80
+    targetPort: 9090
