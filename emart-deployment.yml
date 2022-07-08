@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: emart-webapp
+  labels:
+    app: emart-webapp
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: emart-webapp
+  template:
+    metadata:
+      name: emart-webapp
+      labels:
+        app: emart-webapp
+    spec:
+        containers:
+          - name: emart-webapp
+            image: santhakumari94/emart-app-repo
+
+            ports:
+              - containerPort: 8080
+                name: mysql
+            env:
+              - name: DB_HOSTNAME
+                value: 192.168.21.229
+              - name: DB_PORT
+                value: "3306"
+              - name: DB_NAME
+                value: "emartwebappdb"
+              - name: DB_USERNAME
+                value: "root"
+              - name: DB_PASSWORD
+                valueFrom:
+                  secretKeyRef:
+                    name: my-db-secret
+                    key: db-password
